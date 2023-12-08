@@ -1,7 +1,13 @@
 $input = @(Get-Content -Path .\Day_1-Input.txt)
 [int]$total = 0
+$line = 0
 foreach ($item in $input)
 {
+    Write-Host $item`
+    $item = $item -replace 'oneight', '8'
+    $item = $item -replace 'threeight', '8'
+    $item = $item -replace 'fiveight', '8'
+    $item = $item -replace 'sevenine', '9'
     $item = $item -replace 'one', '1'
     $item = $item -replace 'two', '2'
     $item = $item -replace 'three', '3'
@@ -13,7 +19,8 @@ foreach ($item in $input)
     $item = $item -replace 'nine', '9'
     $digits = $item -replace "[^0-9]", ''
     $fnl = $digits[0,-1] -join ''
-    Write-Host $fnl
+    Write-Host $total " + " $fnl " = "
     $total = $total+$fnl
+    Write-Host $total "----------------"
 }
 Write-Host 'Total = '$total 
